@@ -6,14 +6,23 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives | LYingF-</title>
+  <title>C#中缓存的简单方法及使用Sql设置缓存依赖项 | LYingF-</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="LYingF-">
-<meta property="og:url" content="http://yoursite.com/archives/index.html">
+  <meta name="description" content="使用Cache高速缓存可以提高数据的读取速度，减少服务器与客户端之间的数据交互。因为Cache一经创建就会占用服务器上的资源，所以Cache并不是越多越好，一般用于数据较固定，使用较频繁的地方。">
+<meta name="keywords" content="ASP.NET">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C#中缓存的简单方法及使用Sql设置缓存依赖项">
+<meta property="og:url" content="http://yoursite.com/2017/04/23/cache/index.html">
 <meta property="og:site_name" content="LYingF-">
+<meta property="og:description" content="使用Cache高速缓存可以提高数据的读取速度，减少服务器与客户端之间的数据交互。因为Cache一经创建就会占用服务器上的资源，所以Cache并不是越多越好，一般用于数据较固定，使用较频繁的地方。">
+<meta property="og:image" content="http://i1.piimg.com/4851/f669fd110dd9a8d2.png">
+<meta property="og:image" content="http://i1.piimg.com/4851/2904dc96142fc897.png">
+<meta property="og:image" content="http://i1.piimg.com/4851/d87a4f5dc0666d9c.png">
+<meta property="og:updated_time" content="2017-04-23T08:18:47.535Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="LYingF-">
+<meta name="twitter:title" content="C#中缓存的简单方法及使用Sql设置缓存依赖项">
+<meta name="twitter:description" content="使用Cache高速缓存可以提高数据的读取速度，减少服务器与客户端之间的数据交互。因为Cache一经创建就会占用服务器上的资源，所以Cache并不是越多越好，一般用于数据较固定，使用较频繁的地方。">
+<meta name="twitter:image" content="http://i1.piimg.com/4851/f669fd110dd9a8d2.png">
   
     <link rel="alternative" href="/atom.xml" title="LYingF-" type="application/atom+xml">
   
@@ -143,74 +152,103 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-cache" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/04/23/email/" class="archive-article-date">
-  	<time datetime="2017-04-23T08:21:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-23</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/04/23/email/">后台发送邮件方法</a>
+    <h1 class="article-title" itemprop="name">
+      C#中缓存的简单方法及使用Sql设置缓存依赖项
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">ASP.NET</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/04/23/cache/" class="archive-article-date">
+        
+        <a href="/2017/04/23/cache/" class="archive-article-date">
   	<time datetime="2017-04-23T08:17:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-23</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/04/23/cache/">C#中缓存的简单方法及使用Sql设置缓存依赖项</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>使用Cache高速缓存可以提高数据的读取速度，减少服务器与客户端之间的数据交互。因为Cache一经创建就会占用服务器上的资源，所以Cache并不是越多越好，一般用于数据较固定，使用较频繁的地方。<a id="more"></a></p>
+<h1 id="Cache类的简单使用方法"><a href="#Cache类的简单使用方法" class="headerlink" title="Cache类的简单使用方法"></a>Cache类的简单使用方法</h1><ol>
+<li><p>首先，我们需要引用命名空间System.Web.Caching;</p>
+</li>
+<li><p>Cache类的方法主要提供对缓存数据的编辑操作，如增、删、改等。</p>
+</li>
+</ol>
+<p>在这里我们主要介绍Cache类的Add方法用于将数据添加到Cache对象</p>
+<p>Add方法主要包含以下7个参数下：</p>
+<ul>
+<li><p>参数“key”代表缓存数据项的键值，必须是唯一的。</p>
+</li>
+<li><p>参数“value”代表缓存数据的内容，可以是任意类型。</p>
+</li>
+<li><p>参数“dependencies”表示缓存的依赖项，也就是此项的更改意味着缓存内容已经过期。如果没有依赖项，可将此值设置为NULL。</p>
+</li>
+<li><p>参数“absoluteExpiration”是日期型数据，表示缓存过期的时间，.NET 2.0提供的缓存在过期后是可以使用的，能使用多长时间，就看这个参数的设置。</p>
+</li>
+<li><p>参数“slidingExpiration”的类型表示一段时间间隔，表示缓存参数将在多长时间以后被删除，此参数与absoluteExpiration参数相关联。</p>
+</li>
+<li><p>参数“priority”表示撤销缓存的优先值，此参数的值取自枚举变量“CacheItemPriority”，优先级低的数据项将先被删除。此参数主要用在缓存退出对象时。</p>
+</li>
+<li><p>参数“onRemoveCallback”表示缓存删除数据对象时调用的事件，一般用做通知程序。</p>
+</li>
+</ul>
+<p>通过Add方法，我们可以像这样简单的创建一个Cache</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Cache.Add(ID.ToString(), author, mydep, DateTime.Now.AddSeconds(60), TimeSpan.Zero, CacheItemPriority.Normal, null);</div></pre></td></tr></table></figure>
+<p>当Cache[ID.ToString()]不为null时，我们就可以直接从缓存中读取数据。</p>
+<ol>
+<li>如果想要删除创建的缓存，可以通过Remove方法移除缓存项</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Cache.Remove(ID.ToString());</div></pre></td></tr></table></figure>
+<h1 id="Sql缓存依赖类：SqlCacheDependency类"><a href="#Sql缓存依赖类：SqlCacheDependency类" class="headerlink" title="Sql缓存依赖类：SqlCacheDependency类"></a>Sql缓存依赖类：SqlCacheDependency类</h1><p>我们在上面提到了通过设置缓存依赖项可以检测缓存内容是否已经过期，一旦过期就应该及时更新。在这里我们使用SqlCacheDependency类来检测数据库的数据是否更新。</p>
+<p>首先我们先来进行一些设置</p>
+<ol>
+<li>打开Web.config配置文件，进行如下设置</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;connectionStrings&gt;</div><div class="line">  &lt;add name=&quot;huxiu&quot; connectionString=&quot;data source=(localdb)\v11.0;initial catalog=huxiu;integrated security=True;multipleactiveresultsets=True;&quot;  /&gt;</div><div class="line">  &lt;/connectionStrings&gt;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&lt;system.web&gt;</div><div class="line">   &lt;caching&gt;</div><div class="line">     &lt;sqlCacheDependency enabled=&quot;true&quot; pollTime=&quot;1000&quot;&gt;</div><div class="line">       &lt;databases&gt;</div><div class="line">         &lt;add name=&quot;huxiu&quot; connectionStringName=&quot;huxiu&quot; /&gt;</div><div class="line">       &lt;/databases&gt;</div><div class="line">     &lt;/sqlCacheDependency&gt;</div><div class="line">   &lt;/caching&gt;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>其中pollTime单位为毫秒，意思是每隔1秒检测下数据库，检测表是否有发生变化。connectionStringName应于上面connectionStrings中add name的名字相同。caching中的add name在后面创建缓存依赖项的时候会使用到。</p>
+</blockquote>
+<ol>
+<li>通过命令行启动数据库缓存依赖项</li>
+</ol>
+<p>在C盘中找到aspnet_regsql.exe位于的目录，使用cmd命令行打开该目录</p>
+<p>在该目录下输入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">aspnet_regsql -C &quot;data source=(localdb)\v11.0;initial catalog=huxiu;integrated security=True;multipleactiveresultsets=True;application name=EntityFramework&amp;quot&quot; -ed -et -t &quot;dbo.Author&quot;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>其中-c后面为数据库连接字符串，-t后面为数据库中表的名称</p>
+</blockquote>
+<p><img src="http://i1.piimg.com/4851/f669fd110dd9a8d2.png" alt="image"></p>
+<p>然后，继续在该目录下输入如下代码</p>
+<blockquote>
+<p>以下这步不知道和上面的设置有没有重复，如果出现VS中报错无法连接到SQL 数据库进行缓存依赖项轮询可以尝试继续进行以下设置，没有则可以跳过。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">aspnet_regsql -S (localdb)\v11.0 -E -d dbname -ed</div><div class="line">aspnet_regsql -S (localdb)\v11.0 -E -d dbname -t dbtable -et</div></pre></td></tr></table></figure>
+<blockquote>
+<p>其中dbname为数据库名称，dbtable为数据库中表的名称</p>
+</blockquote>
+<p><img src="http://i1.piimg.com/4851/2904dc96142fc897.png" alt="image"><br><img src="http://i1.piimg.com/4851/d87a4f5dc0666d9c.png" alt="image"></p>
+<ol>
+<li>创建缓存依赖项</li>
+</ol>
+<p>使用以下代码创建缓存依赖项<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">SqlCacheDependency mydep = new SqlCacheDependency(&quot;huxiu&quot;,&quot;Author&quot;);</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>其中的两个参数分别为caching中的add name的名字和数据库中表的名字</p>
+</blockquote>
+<p>通过以上的步骤，我们就可以实现当数据库被更改时通过SqlCacheDependency的HasChanged方法进行判断，从而对缓存数据进行更新。</p>
 
-        <div class="article-info info-on-right">
-          
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -222,95 +260,47 @@
 		</ul>
 	</div>
 
-          
+      
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/04/23/git-dev/" class="archive-article-date">
-  	<time datetime="2017-04-23T08:16:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-23</time>
-</a>
-        </div>
-    	 
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/04/23/git-dev/">通过Git进行分支管理</a>
-    </h1>
+    <a href="/2017/04/23/git-dev/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          通过Git进行分支管理
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/04/23/email/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">后台发送邮件方法</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+  
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Git</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/04/23/radiobutton/" class="archive-article-date">
-  	<time datetime="2017-04-23T08:10:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-23</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/04/23/radiobutton/">在Repeater中实现RadioButton单选</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">ASP.NET</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -333,8 +323,8 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
