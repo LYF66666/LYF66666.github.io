@@ -8,17 +8,17 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>后台发送邮件方法 | LYingF-</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="发送邮件代码">
+  <meta name="description" content="使用以下代码可以实现直接在后台发送邮件">
 <meta name="keywords" content="ASP.NET">
 <meta property="og:type" content="article">
 <meta property="og:title" content="后台发送邮件方法">
 <meta property="og:url" content="http://yoursite.com/2017/04/23/email/index.html">
 <meta property="og:site_name" content="LYingF-">
-<meta property="og:description" content="发送邮件代码">
-<meta property="og:updated_time" content="2017-04-23T08:23:21.568Z">
+<meta property="og:description" content="使用以下代码可以实现直接在后台发送邮件">
+<meta property="og:updated_time" content="2017-04-23T08:25:28.040Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="后台发送邮件方法">
-<meta name="twitter:description" content="发送邮件代码">
+<meta name="twitter:description" content="使用以下代码可以实现直接在后台发送邮件">
   
     <link rel="alternative" href="/atom.xml" title="LYingF-" type="application/atom+xml">
   
@@ -168,7 +168,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="发送邮件代码"><a href="#发送邮件代码" class="headerlink" title="发送邮件代码"></a>发送邮件代码<a id="more"></a></h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">public static void Sends(string email, string formto, string content, string body, string upass)</div><div class="line">&#123;</div><div class="line">string name = &quot;no_reply@xxxx.com&quot;; </div><div class="line">string smtp = &quot;smtp.exmail.sina.com&quot;;</div><div class="line">SmtpClient _smtpClient = new SmtpClient();</div><div class="line">_smtpClient.DeliveryMethod = SmtpDeliveryMethod.Network;</div><div class="line">_smtpClient.Host = smtp; </div><div class="line">_smtpClient.Credentials = new System.Net.NetworkCredential(name, upass);</div><div class="line">MailMessage _mailMessage = new MailMessage();</div><div class="line">_mailMessage.From = new MailAddress(formto, &quot;xxxx公司&quot;);</div><div class="line">_mailMessage.To.Add(email);</div><div class="line">_mailMessage.SubjectEncoding = System.Text.Encoding.GetEncoding(&quot;gb2312&quot;);</div><div class="line">_mailMessage.Subject = content;</div><div class="line">_mailMessage.Body = body;</div><div class="line">_mailMessage.BodyEncoding = System.Text.Encoding.GetEncoding(&quot;gb2312&quot;);</div><div class="line">_mailMessage.IsBodyHtml = true;</div><div class="line">_mailMessage.Priority = MailPriority.High; </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+        <p>使用以下代码可以实现直接在后台发送邮件<a id="more"></a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">public static void Sends(string email, string formto, string content, string body, string upass)</div><div class="line">&#123;</div><div class="line">string name = &quot;no_reply@xxxx.com&quot;; </div><div class="line">string smtp = &quot;smtp.exmail.sina.com&quot;;</div><div class="line">SmtpClient _smtpClient = new SmtpClient();</div><div class="line">_smtpClient.DeliveryMethod = SmtpDeliveryMethod.Network;</div><div class="line">_smtpClient.Host = smtp; </div><div class="line">_smtpClient.Credentials = new System.Net.NetworkCredential(name, upass);</div><div class="line">MailMessage _mailMessage = new MailMessage();</div><div class="line">_mailMessage.From = new MailAddress(formto, &quot;xxxx公司&quot;);</div><div class="line">_mailMessage.To.Add(email);</div><div class="line">_mailMessage.SubjectEncoding = System.Text.Encoding.GetEncoding(&quot;gb2312&quot;);</div><div class="line">_mailMessage.Subject = content;</div><div class="line">_mailMessage.Body = body;</div><div class="line">_mailMessage.BodyEncoding = System.Text.Encoding.GetEncoding(&quot;gb2312&quot;);</div><div class="line">_mailMessage.IsBodyHtml = true;</div><div class="line">_mailMessage.Priority = MailPriority.High; </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <blockquote>
 <p>注：formto需为真实的邮箱地址</p>
 </blockquote>
